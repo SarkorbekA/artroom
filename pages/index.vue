@@ -1,5 +1,9 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
+import { Swiper, SwiperSlide } from 'swiper/vue';
+// import SwiperCore, { Autoplay, Navigation } from 'swiper';
+
+// SwiperCore.use([Autoplay, Navigation]);
 
 import iconGeo from "~/components/icons/geo.vue";
 import iconPhone from "~/components/icons/phone.vue";
@@ -14,7 +18,6 @@ import iconCheck from "~/components/icons/iconCheck.vue";
 import iconStar from "~/components/icons/iconStar.vue"
 import iconStarFill from "~/components/icons/iconStarFill.vue"
 import iconPlus from "~/components/icons/iconPlus.vue"
-// const { locale, setLocale } = useI18n()
 
 const scrolled = ref(false);
 
