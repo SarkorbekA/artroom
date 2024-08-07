@@ -1,9 +1,6 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import { Swiper, SwiperSlide } from 'swiper/vue';
-// import SwiperCore, { Autoplay, Navigation } from 'swiper';
-
-// SwiperCore.use([Autoplay, Navigation]);
 
 import iconGeo from "~/components/icons/geo.vue";
 import iconPhone from "~/components/icons/phone.vue";
@@ -18,6 +15,9 @@ import iconCheck from "~/components/icons/iconCheck.vue";
 import iconStar from "~/components/icons/iconStar.vue"
 import iconStarFill from "~/components/icons/iconStarFill.vue"
 import iconPlus from "~/components/icons/iconPlus.vue"
+import iconPlay from "~/components/icons/iconPlay.vue"
+import iconArrowLeft from "~/components/icons/iconArrowLeft.vue"
+import iconArrowRight from "~/components/icons/iconArrowRight.vue"
 
 const scrolled = ref(false);
 
@@ -105,6 +105,73 @@ const products = ref([
   }
 ])
 
+const services = ref([
+  {
+    status: true,
+    title: "Interior decorating",
+    text: "Dolores sit ipsum velit purus aliquet, massa fringilla leo orci. Lorem ipsum dolor sit amet elit magnis nulla.",
+    img: 'https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/06/1-1.jpg'
+  },
+  {
+    status: false,
+    title: "Interior decorating",
+    text: "Dolores sit ipsum velit purus aliquet, massa fringilla leo orci. Lorem ipsum dolor sit amet elit magnis nulla.",
+    img: 'https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/06/1-1.jpg'
+  },
+  {
+    status: false,
+    title: "Interior decorating",
+    text: "Dolores sit ipsum velit purus aliquet, massa fringilla leo orci. Lorem ipsum dolor sit amet elit magnis nulla.",
+    img: 'https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/06/1-1.jpg'
+  },
+])
+
+const brands = ref([
+  "https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/client-logo-3.png",
+  "https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/client-logo-3.png",
+  "https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/client-logo-3.png",
+  "https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/client-logo-3.png",
+  "https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/client-logo-3.png",
+  "https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/client-logo-3.png",
+  "https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/client-logo-3.png",
+  "https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/client-logo-3.png",
+])
+
+
+const team = ref([
+  {
+    img: 'https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/review-design-3.png',
+    title: 'Excellent work',
+    rating: 3,
+    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    name: "Fiona Williams",
+    city: "New York, NY"
+  },
+  {
+    img: 'https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/review-design-3.png',
+    title: 'Excellent work',
+    rating: 5,
+    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    name: "Fiona Williams",
+    city: "New York, NY"
+  },
+  {
+    img: 'https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/review-design-3.png',
+    title: 'Excellent work',
+    rating: 5,
+    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    name: "Fiona Williams",
+    city: "New York, NY"
+  },
+  {
+    img: 'https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/review-design-3.png',
+    title: 'Excellent work',
+    rating: 5,
+    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    name: "Fiona Williams",
+    city: "New York, NY"
+  },
+])
 
 const formatNumber = (num) => {
   return parseFloat(num).toFixed(2);
@@ -112,6 +179,11 @@ const formatNumber = (num) => {
 
 const handleScroll = () => {
   scrolled.value = window.scrollY >= 35;
+}
+
+const changeServiceStatus = (el) => {
+  services.value.map(el => el.status = false);
+  el.status = true;
 }
 
 onMounted(() => {
@@ -125,7 +197,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div>
+  <div class="bg-white">
     <header class="header fixed w-full top-0 left-o text-white z-[1000]"
       :class="{
         active: scrolled
@@ -228,7 +300,7 @@ onBeforeUnmount(() => {
       </div>
 
     </header>
-    <main class="pb-[80px]">
+    <main>
       <Swiper class="banner-swiper"
         :modules="[SwiperAutoplay, SwiperNavigation]"
         :slides-per-view="1"
@@ -260,7 +332,76 @@ onBeforeUnmount(() => {
         </SwiperSlide>
       </Swiper>
     </main>
-    <section class="projects pb-[20px]">
+    <section class="services pt-[80px] pb-[35px]">
+      <div class="container">
+        <div class="flex gap-[15px] mb-[30px]">
+          <div v-for="(item, index) in services"
+            :key="index"
+            class="services__item 2xl:h-[370.5px] h-[306.5px] float-left relative overflow-hidden flex"
+            @mouseenter="changeServiceStatus(item)"
+            @click="changeServiceStatus(item)"
+            :class="{
+        active: item.status
+      }">
+            <div class="h-full services__item-img max-w-[370.5px] max-[1535px]:max-w-[306.5px]">
+              <img class="object-cover w-full h-full block"
+                :src="item.img"
+                alt="service image">
+            </div>
+            <div
+              class="absolute left-[306.5px] 2xl:left-[370.5px] bg-[#f3f3f3] h-full max-w-[400px] w-[306.5px] 2xl:w-[370.5px] p-10">
+              <h4 class="2xl:text-2xl text-base font-bold mb-5 museo text-[#2f2f2f]">{{ item.title }}</h4>
+              <p class="font-bold text-sm 2xl:text-xl text-[#9e9e9e] museo">{{ item.text }}</p>
+              <button type="button"
+                class="button mt-[25px]">Read More</button>
+            </div>
+          </div>
+        </div>
+        <div class="py-[45px] flex justify-between items-center">
+          <div>
+            <h3 class="text-left text-2xl	leading-[1.4] tracking-tighter text-[#2f2f2f] font-bold">Book an appointment
+              today</h3>
+            <p class="leading-[1.4] text-sm	text-[#9e9e9e] text-left">Booking an appointment online is the quickest and
+              easiest way to schedule.</p>
+          </div>
+          <button type="button"
+            class="button">View All Services</button>
+        </div>
+      </div>
+    </section>
+    <section class="video py-[80px] bg-[#f7f7f7]">
+      <div class="container flex">
+        <div class="w-1/2">
+          <h3 class="mt-5 mb-2.5 text-[34px] text-[#2f2f2f] font-bold leading-[45px] max-w-[485px]">Work one-on-one with
+            your interior
+            designer</h3>
+          <p class="museo mt-[25px] mb-10 text-base text-[#9e9e9e] max-w-[485px]">Mus accumsan venenatis hac curabitur
+            per quis
+            parturient
+            vel ut a
+            sit scelerisque a
+            sociis
+            posuere
+            penatibus. Nunc risus est nulla morbi, egestas lobortis dui maecenas lacinia qui adipiscing, evget purus
+            venenatis hac curabitur per morbi.</p>
+          <button type="button"
+            class="button">Get Started</button>
+        </div>
+        <div class="w-1/2">
+          <div class="aspect-[650/350] overflow-hidden video-box relative">
+            <img class="w-full h-full object-cover"
+              src="https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/video-1.jpg"
+              alt="image">
+            <button type="button"
+              class="w-[80px] h-[80px] rounded-full bg-[#FF5959] absolute left-1/2 top-1/2 duration-200 hover:scale-110 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+              <icon-play fill="#ffffff"
+                class="w-7 h-7" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="projects pt-[80px]">
       <h2 class="title text-center">Client projects</h2>
       <p class="subtitle">Browse styles and get inspired with our favorite home redesign projects.</p>
       <div class="mt-[50px]"></div>
@@ -282,6 +423,21 @@ onBeforeUnmount(() => {
           </div>
         </SwiperSlide>
       </Swiper>
+    </section>
+    <section class="brand py-[80px]">
+      <div class="container">
+        <Swiper :slides-per-view="5">
+          <SwiperSlide v-for="(el, index) in brands"
+            :key="index">
+            <div
+              class="brand-item overflow-hidden after:content-[''] after:absolute after:top-1/2 after:-translate-y-1/2 after:h-[28px] after:w-[2px] after:bg-[#dadada] after:right-[-1px] flex justify-center items-center h-[62px]">
+              <img :src="el"
+                class="aspect-ratio-[150/62] w-[135px] duration-200 select-none"
+                alt="brand item">
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
     </section>
     <section class="price pt-[80px] pb-[80px] bg-[#f3f3f3]">
       <div class="container flex ">
@@ -381,6 +537,59 @@ onBeforeUnmount(() => {
 
       </div>
     </section>
+    <section class="team py-[80px]">
+      <div class="container">
+        <h2 class="title text-center">In good company</h2>
+        <p class="subtitle">We are very proud of the service we provide and stand by every product we carry. Read our
+          testimonials from our happy customers.</p>
+        <div class="mt-[50px]">
+          <Swiper :modules="[SwiperNavigation]"
+            :slides-per-view="3"
+            :space-between="30"
+            :navigation="{
+        nextEl: '.team-swiper-next',
+        prevEl: '.team-swiper-prev'
+      }">
+            <SwiperSlide v-for="(el, index) in team"
+              :key="index"
+              class="bg-[#f3f3f3] !flex flex-col items-center py-[35px] px-[40px]">
+              <div class="w-[80px] h-[80px] rounded-full mb-[30px]">
+                <img :src="el.img"
+                  class="w-full h-full object-cover"
+                  alt="person image">
+              </div>
+              <h3 class="uppercase text-[#2f2f2f] text-base	font-bold museo text-center mb-[15px]">{{ el.title }}</h3>
+              <div class="flex gap-1.5 items-center">
+                <div v-for="star in 5"
+                  :key="star">
+                  <component :color="'#FF5959'"
+                    :is="star <= el.rating ? iconStarFill : iconStar" />
+                </div>
+              </div>
+              <p class="py-[20px] text-center text-[#9e9e9e] text-sm leading-7 max-w-[310px] museo">
+                {{ el.text }}
+              </p>
+              <h3 class="text-[#2f2f2f] text-base	font-bold museo text-center">{{ el.name }}</h3>
+              <h4 class="text-[#9e9e9e] text-sm museo text-center">{{ el.city }}</h4>
+            </SwiperSlide>
+          </Swiper>
+          <div class="flex justify-center gap-1.5 mt-[30px]">
+            <button type="button"
+              class="team-swiper-prev w-[26px] h-[28px] border-[2px] border-[#2f2f2f] flex items-center justify-center">
+              <iconArrowLeft fill="#2f2f2f"
+                width="12"
+                height="12" />
+            </button>
+            <button type="button"
+              class="team-swiper-next w-[26px] h-[28px] border-[2px] border-[#2f2f2f] flex items-center justify-center">
+              <iconArrowRight fill="#2f2f2f"
+                width="12"
+                height="12" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="products pt-[80px] pb-[80px] bg-[#f3f3f3]">
       <div class="container">
         <h2 class="title text-center">Curated shopping</h2>
@@ -429,6 +638,209 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </section>
+    <section class="contactus py-[80px]">
+      <div class="container flex justify-between items-center">
+        <div class="max-w-[485px]">
+          <h3 class=" text-[34px] font-bold leading-[45px] text-[#2f2f2f] tracking-tighter">
+            Have any questions? Let's get in touch!
+          </h3>
+          <p class="museo mt-[25px] text-[#9e9e9e] text-sm max-w-[380px]">
+            Contact us if your are thinking of redesigning your home. Schedule a free consultation with a member of our
+            design team.
+          </p>
+        </div>
+        <div class="w-[500px]">
+          <form class="flex flex-col gap-2.5 items-end">
+            <div class="w-full">
+              <input
+                class="w-full outline-[#FF5959] museo font-black px-[25px] h-[50px] border-[2px] border-[#dfe5f1] text-sm placeholder:text-[#333333]"
+                name="name"
+                id="name"
+                type="text"
+                placeholder="Name">
+            </div>
+            <div class="w-full">
+              <input
+                class="w-full outline-[#FF5959] museo font-black px-[25px] h-[50px] border-[2px] border-[#dfe5f1] text-sm placeholder:text-[#333333]"
+                name="email"
+                id="email"
+                type="email"
+                placeholder="Email">
+            </div>
+            <textarea
+              class="w-full resize-none outline-[#FF5959] museo font-black pt-[15px] px-[25px] border-[2px] border-[#dfe5f1] text-sm placeholder:text-[#333333]"
+              name="message"
+              id="message"
+              cols="10"
+              rows="7"
+              placeholder="Message"></textarea>
+            <button type="button"
+              class="button !max-w-[200px]">Book Appointment</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer class="footer bg-[#1f1f1f]">
+      <div class="container ">
+        <div class="!p-10 w-full flex items-center justify-between bg-[#1a1a1a]">
+          <div class="flex gap-[30px] items-center">
+            <h3 class="font-bold text-[#f0f8ff] text-sm museo">Find us on:</h3>
+            <div>
+              <ul class="flex gap-5">
+                <li>
+                  <a href="#"
+                    class="w-10 h-10 bg-[#1f1f1f] flex items-center justify-center footer-social">
+                    <icons-facebook fill="#FF5959" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#"
+                    class="w-10 h-10 bg-[#1f1f1f] flex items-center justify-center footer-social">
+                    <icons-twitter fill="#FF5959" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#"
+                    class="w-10 h-10 bg-[#1f1f1f] flex items-center justify-center footer-social">
+                    <icons-linkedin fill="#FF5959" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#"
+                    class="w-10 h-10 bg-[#1f1f1f] flex items-center justify-center footer-social">
+                    <icons-instagram fill="#FF5959" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex gap-6 footer-contact justify-end">
+            <div class="max-w-[340px] w-full">
+              <input
+                class="bg-[#1f1f1f] museo w-full block px-[25px] h-10 outline-none text-sm placeholder:text-[#9e9e9e] text-[#ffffff]"
+                type="text"
+                name="subscribe"
+                id="subscribe"
+                placeholder="Subscribe to newsletter">
+            </div>
+            <button type="button"
+              class="button h-10 !py-0 third">Subscribe</button>
+          </div>
+
+        </div>
+        <div class="mt-[60px] flex gap-5">
+          <div class="max-w-[280px] w-full">
+            <h3 class="text-white text-sm font-bold leading-5 museo mb-5 uppercase">Etalon Theme</h3>
+            <p class="text-sm museo text-[#9e9e9e]">Tincidunt elit magnis nulla facilisis. Dolor sagittis maecenas.
+              Sapien nunc amet ultrices, dolores sit
+              ipsum velit purus aliquet, massa fringilla leo orci.</p>
+          </div>
+          <div class="flex flex-col gap-5 max-w-[280px] w-full">
+            <h3 class="text-white text-sm font-bold leading-5 museo uppercaseo">Services</h3>
+            <ul class="flex flex-col">
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Commercial
+                  design</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Consultation</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Office
+                  design</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Home
+                  redecorating</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Curated
+                  shopping</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-5 max-w-[280px] w-full">
+            <h3 class="text-white text-sm font-bold leading-5 museo uppercaseo">Additional links
+            </h3>
+            <ul class="flex flex-col">
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">About
+                  us</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Terms
+                  and conditions</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Privacy
+                  policy</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">News</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Contact
+                  us</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-5 max-w-[320px] w-full">
+            <h3 class="text-white text-sm font-bold leading-5 museo uppercaseo">Latest news</h3>
+            <ul class="flex flex-col">
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Land
+                  lights let be divided <span class="museo font-normal">- June 24, 2017</span></a>
+              </li>
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Seasons
+                  over bearing air <span class="museo font-normal">- June 24, 2017</span></a>
+              </li>
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Signs
+                  likeness for may <span class="museo font-normal">- January 25, 2016</span></a>
+              </li>
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Greater
+                  open after grass <span class="museo font-normal">- January 25, 2016</span></a>
+              </li>
+              <li>
+                <a href="#"
+                  class="text-[#9e9e9e] font-bold leading-[30px] text-sm museo duration-200 hover:text-[#FF5959]">Gathered
+                  was divide second <span class="museo font-normal">- February 15, 2015</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mt-[80px] bg-[#1a1a1a] pt-6 pb-5">
+        <div class="container flex justify-between items-center">
+          <h3 class="text-[#9e9e9e] text-sm museo">Artroom by SecureSector. All rights reserved.
+          </h3>
+          <div class="flex gap-5 items-center">
+            <a href="#"
+              class="font-bold text-sm text-[#ffffff] museo">Terms and conditions
+            </a>
+            <a href="#"
+              class="font-bold text-sm text-[#ffffff] museo">Privacy policy
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -450,6 +862,62 @@ onBeforeUnmount(() => {
   }
 }
 
+.footer {
+  &-social {
+    transition: all 250ms ease-in-out;
+
+    svg {
+      transition: all 250ms ease-in-out;
+    }
+
+    &:hover {
+      background: #FF5959;
+
+      svg {
+        fill: #f0f8ff;
+      }
+    }
+  }
+
+  &-contact {
+    width: calc(100% - 350px);
+  }
+}
+
+.brand {
+  &-item {
+    &:hover {
+      img {
+        transform: scale(1.1)
+      }
+    }
+  }
+}
+
+.services {
+  &__item {
+    width: 25%;
+    transition: all 450ms ease-in-out;
+
+    &.active {
+      width: 50%;
+    }
+  }
+}
+
+.video {
+  &-box {
+    img {
+      transition: .25s ease-in-out;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1)
+      }
+    }
+  }
+}
 
 .title {
   font-size: 34px;
@@ -593,13 +1061,16 @@ onBeforeUnmount(() => {
   text-transform: uppercase;
   padding: 14px 24px;
   font-size: 12px;
-  font-weight: 900;
   max-width: 170px;
+  font-weight: 900;
   width: 100%;
   display: flex;
   justify-content: center;
   font-family: 'Museo';
   user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     color: #FF5959;
@@ -639,6 +1110,14 @@ onBeforeUnmount(() => {
     }
   }
 
+  &.third {
+    &:hover {
+      border: 2px solid #ffffff;
+      background-color: #ffffff;
+      color: #FF5959;
+
+    }
+  }
 }
 
 
