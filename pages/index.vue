@@ -439,7 +439,54 @@ onBeforeUnmount(() => {
         </Swiper>
       </div>
     </section>
-    <section class="price pt-[80px] pb-[80px] bg-[#f3f3f3]">
+    <section class="statistics">
+      <div class="relative pt-[100px] pb-[340px]">
+        <div
+          class="bg-[url('https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/parallax2-1.jpg')] w-full h-full top-0 left-0 absolute">
+
+        </div>
+        <div class="container relative z-10">
+          <h3 class="font-bold text-[34px] leading-[45px] tracking-tighter text-center text-[#ffffff]">Rely on an expert
+            eye</h3>
+          <p class="museo mt-2.5 text-center m-auto max-w-[650px] font-light text-[#ffffff] mb-[50px]">Let your designer
+            do the hard
+            work and find the right pieces for you, your space and budget.</p>
+        </div>
+      </div>
+
+      <div class="bg-[#f3f3f3] pb-[100px] relative">
+        <div class="container h-[305px]">
+          <div class="relative h-[605px] bg-[red] -translate-y-[305px] flex">
+            <div class="w-1/2 h-full">
+              <img class="w-full h-full object-cover"
+                src="https://www.keydesign-themes.com/etalon/home-decor/wp-content/uploads/sites/9/2017/09/about-us.jpg"
+                alt="statistics image">
+            </div>
+            <div class="w-1/2 bg-white h-full flex flex-col justify-center px-[70px]">
+              <div class="flex items-center max-w-[440px] justify-between w-full">
+                <div class="flex flex-col items-center gap-1.5">
+                  <h3 class="text-[55px] leading-[48px] mb-2.5 text-center text-[#FF5959]">125</h3>
+                  <h4 class="museo mt-[10px] text-center text-base font-semibold">Designers</h4>
+                </div>
+                <div class="flex flex-col items-center gap-1.5">
+                  <h3 class="text-[55px] leading-[48px] mb-2.5 text-center text-[#FF5959]">350</h3>
+                  <h4 class="museo mt-[10px] text-center text-base font-semibold">Projects</h4>
+                </div>
+                <div class="flex flex-col items-center gap-1.5">
+                  <h3 class="text-[55px] leading-[48px] mb-2.5 text-center text-[#FF5959]">630</h3>
+                  <h4 class="museo mt-[10px] text-center text-base font-semibold">Happy clients</h4>
+                </div>
+              </div>
+              <p class="museo text-[#9e9e9e] text-sm mt-[50px] leading-6">Mus accumsan venenatis hac curabitur per quis parturient vel ut a sit scelerisque a sociis posuere
+                penatibus. Nunc risus est nulla morbi, egestas lobortis dui maecenas lacinia qui adipiscing, evget purus
+                venenatis hac curabitur per morbi.</p>
+                <div class="button mt-[55px]">Read More</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="price pb-[80px] bg-[#f3f3f3]">
       <div class="container flex ">
         <div class="max-w-[415px] pl-[15px] w-1/3 mr-4">
           <div class="max-w-[300px] w-full">
